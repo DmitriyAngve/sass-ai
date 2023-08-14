@@ -1,13 +1,20 @@
 "use client";
 
+import * as z from "zod"; // библиотека для валидации и создания схем данных в TypeScript. Позволяет определять структуры данных, называемые схемами, и затем использовать эти схемы для валидации и преобразования данных.
 import { Heading } from "@/components/heading";
 import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { formSchema } from "./constants";
 
 const ConversationPage = () => {
-  const form = useForm({
+  const form = useForm<z.infer<typeof formSchema>>({
+    // "<z.infer<typeof formSchema>>" - указываю тип данных, используя интерференс, полуенный из схемы данных "formSchema"
+    resolver: zodResolver(formSchema),
+    // Связываю с помощью "zodResolver" с схему данных "formSchema" с резольвером схемы. Это позволяет валидировать и обрабатывать данные формы на основе этой схемы.
     defaultValues: {
-      prompt: "",
+      prompt: "", // изначальное значение - пустая строка
     },
   });
 
