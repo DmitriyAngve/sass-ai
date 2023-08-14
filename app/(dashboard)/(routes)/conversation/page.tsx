@@ -9,6 +9,7 @@ import { Heading } from "@/components/heading";
 
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 import { formSchema } from "./constants";
 
@@ -60,14 +61,26 @@ const ConversationPage = () => {
                 render={({ field }) => (
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
-                      <Input className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent" />
+                      <Input
+                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        disabled={isLoading} // "disabled" активируется когда закгрузим форму
+                        placeholder="How do I calculate the redius of a circle?"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
               />
+              <Button
+                className="col-span-12 lg:col-span-2"
+                disabled={isLoading}
+              >
+                Generate
+              </Button>
             </form>
           </Form>
         </div>
+        <div className="space-y-4 mt-4">Messages Content</div>
       </div>
     </div>
   );
