@@ -1,21 +1,19 @@
 "use client";
 
-import axios from "axios";
 import * as z from "zod";
+import axios from "axios";
 import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChatCompletionRequestMessage } from "openai";
 
 import { Heading } from "@/components/heading";
-
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { formSchema } from "./constants";
-import { useState } from "react";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -37,13 +35,11 @@ const ConversationPage = () => {
         role: "user",
         content: values.prompt,
       };
-
       const newMessages = [...messages, userMessage];
 
       const response = await axios.post("/api/conversation", {
         messages: newMessages,
       });
-
       setMessages((current) => [...current, userMessage, response.data]);
 
       form.reset();

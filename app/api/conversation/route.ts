@@ -1,15 +1,14 @@
-import { auth } from "@clerk/nextjs"; // аутентификация с помощью clerk
+import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { Configuration, OpenAIApi } from "openai"; // для настройки взаимодействия с OPENAI.
+import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-``;
+
 const openai = new OpenAIApi(configuration);
 
 export async function POST(req: Request) {
-  // функция POST ожидает HTTP POST запрос с данными в формате JSON. Проверяет наличие пользователя (userId) и наличие необходимых данных (messages). Если какая-то проверка не проходит, то возвращает HTTP-ответ с соответствующим кодом ошибки и сообщением.
   try {
     const { userId } = auth();
     const body = await req.json();
@@ -32,11 +31,11 @@ export async function POST(req: Request) {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages,
-    }); // Если все проверки проходят, то функция отправляет запрос к OpenAI API с использованием метода "createChatCompletion". Он принимает модель (model) и сообщение (messages)
+    });
 
-    return NextResponse.json(response.data.choices[0].message); // ответ от OpenAI API содержит текст ответа, который возвращается как JSON-ответ от сервера.
+    return NextResponse.json(response.data.choices[0].message);
   } catch (error) {
     console.log("[CONVERSATION_ERROR]", error);
-    return new NextResponse("Internal error", { status: 500 }); // В случае ошибки она логируется и возвращает HTTP-ответ с кодом 500
+    return new NextResponse("Internal Error", { status: 500 });
   }
 }
