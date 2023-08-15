@@ -23,7 +23,6 @@ export async function POST(req: Request) {
         status: 500,
       });
     }
-
     if (!messages) {
       return new NextResponse("Messages are required", { status: 400 });
     }
