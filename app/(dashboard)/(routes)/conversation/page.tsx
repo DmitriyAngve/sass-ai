@@ -46,13 +46,14 @@ const ConversationPage = () => {
       const response = await axios.post("/api/conversation", {
         messages: newMessages,
       });
+
       setMessages((current) => [...current, userMessage, response.data]);
 
       form.reset();
     } catch (error: any) {
       console.log(error);
     } finally {
-      router.refresh();
+      router.refresh(); // router.refresh() is used to rehydrate all server components fetching the newest data. It doesn't really matter where you are all server components are going to get refreshed with new data from the database.
     }
   };
 
