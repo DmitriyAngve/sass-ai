@@ -7,3 +7,13 @@ datasource db {
   url = env("DATABASE_URL")
   relationMode = "prisma"
 }
+
+
+// Model for user API limits
+model UserApiLimit {
+  id String @id @default(cuid()) // аннотация "@id" делает это поле первичным ключом таблицы. "@default(cuid())" - аннотация, означающая что если значение этого поля не указано при создании записи, то будет сгенерирован уникальный идентификатор
+  userId String @unique // "@unique" - гарантирует уникальность записи "usedID"
+  count Int @default(0) // это поле имеет тип "Int" и аннотацию "@default(0)", что означает, что если для поля не будет указано записи, то оно будет === 0
+  createdAt DateTime @default(now()) // это поле будет содержать дату и время создания записи. "@default(now())" - означает, что если оно не будет указано, то создастся время - сейчас
+  updatedAt DateTime @updatedAt // аннотация "@updatedAt" указывает на то, что Prisma будет обновлять поле автоматически.
+}
