@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs";
 import prismabd from "@/lib/prismadb";
 
 import { MAX_FREE_COUNTS } from "@/constants";
+import { use } from "react";
 
 export const increaseApiLimit = async () => {
   const { userId } = auth(); // extract the "userId", using "auth"
@@ -53,4 +54,24 @@ export const checkApiLimit = async () => {
   } else {
     return false; // block the user
   }
+};
+
+// Для проверки счетчика Лимитов
+export const getApiLimitCount = async () => {
+  const { userId } = auth();
+
+  if (!userId) {
+    return 0;
+  }
+
+  const userApiLimit = await prismabd.userApiLimit.findUnique({
+    where: {
+      userId,
+    },
+  });
+
+  if (!userApiLimit) {
+    return 0;
+  }
+  return userApiLimit.count;
 };
