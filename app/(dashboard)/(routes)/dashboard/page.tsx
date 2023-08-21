@@ -9,7 +9,6 @@ import {
   ImageIcon,
   MessageSquare,
   Music,
-  Video,
   VideoIcon,
 } from "lucide-react";
 
