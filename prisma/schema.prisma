@@ -24,7 +24,7 @@ model UserSubscription{
   stripeCustomerId String? @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId String? @unique @map(name: "stripe_subscription_id")
   stripePriceId String? @map(name:"stripe_price_id")
-  stripeCurrenPeriodEnd DateTime? @map(name:"stripe_current_preiod_end")
+  stripeCurrentPeriodEnd DateTime? @map(name:"stripe_current_preiod_end")
 }
 // @default(cuid()) - этот декоратор указывает, что если значение не предоставлено явно при создании записи, оно будет генерироваться с помощью функции cuid() 
 // String? - не обязательно
