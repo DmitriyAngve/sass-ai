@@ -15,9 +15,11 @@ import { Empty } from "@/components/empty";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { formSchema } from "./constants";
+import { useProModal } from "@/hooks/use-pro-modal";
 import Loader from "@/components/loader";
 
 const MusicPage = () => {
+  const proModal = useProModal();
   const router = useRouter();
 
   const [music, setMusic] = useState<string>();
@@ -41,6 +43,9 @@ const MusicPage = () => {
 
       form.reset();
     } catch (error: any) {
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
       console.log(error);
     } finally {
       router.refresh();
