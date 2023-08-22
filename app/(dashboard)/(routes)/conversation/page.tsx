@@ -19,9 +19,11 @@ import { formSchema } from "./constants";
 import Loader from "@/components/loader";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
+import { useProModal } from "@/hooks/use-pro-modal";
 import { cn } from "@/lib/utils";
 
 const ConversationPage = () => {
+  const proModal = useProModal();
   const router = useRouter();
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
@@ -51,6 +53,10 @@ const ConversationPage = () => {
 
       form.reset();
     } catch (error: any) {
+      if (error?.response?.status === 403) {
+        // if one of the error happen => open proModal
+        proModal.onOpen();
+      }
       console.log(error);
     } finally {
       router.refresh(); // router.refresh() is used to rehydrate all server components fetching the newest data. It doesn't really matter where you are all server components are going to get refreshed with new data from the database.
