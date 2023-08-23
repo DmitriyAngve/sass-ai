@@ -59,6 +59,8 @@ export async function GET() {
         userId,
       }, // для идентификации пользователя (для связывания оплаты с конкретным пользователем)
     });
+
+    return new NextResponse(JSON.stringify({ url: stripeSession.url }));
   } catch (error) {
     console.log("[STRIPE_ERROR]", error);
     return new NextResponse("Internal error", { status: 500 });
