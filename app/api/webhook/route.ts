@@ -21,4 +21,51 @@ export async function POST(req: Request) {
   } catch (error: any) {
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 });
   }
+
+  // Завершение сеанса оформления заказа
+  const session = event.data.object as Stripe.Checkout.Session; // создаю переменную, которая извлекает объект сессии оформления заказа ("Stripe.Checkout.Session") из пол "event.data.object". Вебхук Stripe передает информацию о событии в виде объекта, и здесь я извлекаю объект сесси офомления заказа.
+
+  if (event.type === "checkout.session.completed") {
+    const subscription = await stripe.subscriptions.retrieve(
+      session.subscription as string
+    ); // проверкан на успешность завершения заказа
+    // "stripe.subscriptions.retrieve" - метод запрашивает данные о подписке
+
+    if (!session?.metadata?.userId) {
+      return new NextResponse("User id is required", { status: 400 });
+    }
+    // prisma subscription
+    await prismabd.userSubscription.create({
+      // здесь выполняется создание записи о подписке пользователя в БД. Метод "create" создает новую в таблице БД
+      data: {
+        userId: session?.metadata?.userId,
+        stripeSubscriptionId: subscription.id,
+        stripeCustomerId: subscription.customer as string,
+        stripePriceId: subscription.items.data[0].price.id,
+        stripeCurrentPeriodEnd: new Date(
+          subscription.current_period_end * 1000
+        ),
+      },
+    });
+  }
+
+  if (event.type === "invoice.payment_succeeded") {
+    const subscription = await stripe.subscriptions.retrieve(
+      session.subscription as string
+    );
+
+    await prismabd.userSubscription.update({
+      where: {
+        stripeSubscriptionId: subscription.id,
+      },
+      data: {
+        stripePriceId: subscription.items.data[0].price.id,
+        stripeCurrentPeriodEnd: new Date(
+          subscription.current_period_end * 1000
+        ),
+      },
+    });
+  }
+
+  return new NextResponse(null, { status: 200 });
 }
