@@ -53,7 +53,6 @@ export async function POST(req: Request) {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string
     );
-
     await prismabd.userSubscription.update({
       where: {
         stripeSubscriptionId: subscription.id,
