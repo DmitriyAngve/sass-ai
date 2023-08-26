@@ -25,6 +25,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { toast } from "react-hot-toast";
 
 const tools = [
   {
@@ -70,7 +71,7 @@ export const ProModal = () => {
 
       window.location.href = (await response).data.url; // "window.location.href" - это способ перенаправления текущего окна браузера на указанный URL, который будет получен из "(await.response).data.url"
     } catch (error) {
-      console.log(error, "STRIPE_CLIENT_ERROR");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
