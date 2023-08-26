@@ -17,6 +17,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { formSchema } from "./constants";
 import { useProModal } from "@/hooks/use-pro-modal";
 import Loader from "@/components/loader";
+import { toast } from "react-hot-toast";
 
 const MusicPage = () => {
   const proModal = useProModal();
@@ -45,6 +46,8 @@ const MusicPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
       console.log(error);
     } finally {

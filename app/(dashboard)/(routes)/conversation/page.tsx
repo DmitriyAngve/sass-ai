@@ -21,6 +21,7 @@ import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { cn } from "@/lib/utils";
+import { toast } from "react-hot-toast";
 
 const ConversationPage = () => {
   const proModal = useProModal();
@@ -39,6 +40,7 @@ const ConversationPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // throw new Error("Something");
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
         content: values.prompt,
@@ -56,6 +58,8 @@ const ConversationPage = () => {
       if (error?.response?.status === 403) {
         // if one of the error happen => open proModal
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
       console.log(error);
     } finally {
