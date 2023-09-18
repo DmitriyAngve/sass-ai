@@ -38,19 +38,21 @@ This repository is for a SaaS AI Platform built with the following technologies:
 
 **Node version 18.x.x**
 
-### Cloning the repository
+## Installation and Usage
+
+### 1. Cloning the repository
 
 ```shell
 git clone https://github.com/DmitriyAngve/sass-ai
 ```
 
-### Install packages
+### 2. Install packages
 
 ```shell
 npm i
 ```
 
-### Setup .env file
+### 3. Setup .env file
 
 ```js
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
@@ -72,7 +74,7 @@ STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
-### Setup Prisma
+### 4. Setup Prisma
 
 Add MySQL Database (I used PlanetScale)
 
@@ -80,13 +82,13 @@ Add MySQL Database (I used PlanetScale)
 npx prisma db push
 ```
 
-### Start the app
+### 5. Start the app
 
 ```shell
 npm run dev
 ```
 
-## Available commands
+## 6. Available commands
 
 Running commands with npm `npm run [command]`
 
