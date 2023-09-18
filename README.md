@@ -1,12 +1,28 @@
-This is a repository for Build a SaaS AI Platform with Next.js 13, React, Tailwind, Prisma, Stripe.
+# SaaS-AI
 
-https://sass-ai-xi.vercel.app/
+This repository is for a SaaS AI Platform built with the following technologies:
 
-Features:
+## Technologies Used
 
-- Tailwind design
-- Tailwind animations and effects
-- Full responsiveness
+- **Next.js 13**: A React framework for efficient web development, with features like Server-Side Rendering (SSR) and optimized routing.
+- **React**: A JavaScript library for building dynamic and interactive user interfaces.
+- **TypeScript**: A statically typed superset of JavaScript that enhances code quality and productivity.
+- **Tailwind CSS**: A utility-first CSS framework for simplified and consistent styling.
+- **ShadcnUI**: A UI library for creating reusable interface components.
+- **Prisma**: A database ORM tool with a type-safe query language.
+- **Stripe**: A payment processing platform for secure online transactions.
+- **Clerk**: An authentication and user management service for easy user registration and login.
+- **MySQL**: An open-source relational database management system for data storage.
+- **zod**: A TypeScript-first schema validation library.
+- **Zustand**: A state management library for React applications.
+- **React-Hook-Form**: A library for managing form state and validation in React.
+- **React-Toast**: A library for displaying toast notifications in React applications.
+
+[Live Demo](https://sass-ai-xi.vercel.app/)
+
+## Features:
+
+- Tailwind design, animations, effects and responsive
 - Clerk Authentication (Email, Google, 9+ Social Logins)
 - Client form validation and handling using react-hook-form
 - Server error handling using react-toast
@@ -17,11 +33,6 @@ Features:
 - Page loading state
 - Stripe monthly subscription
 - Free tier with API limiting
-- How to write POST, DELETE, and GET routes in route handlers (app/api)
-- How to fetch data in server react components by directly accessing database (WITHOUT API! like Magic!)
-- How to handle relations between Server and Child components!
-- How to reuse layouts
-- Folder structure in Next 13 App Router
 
 ### Prerequisites
 
@@ -30,7 +41,7 @@ Features:
 ### Cloning the repository
 
 ```shell
-git clone https://github.com/AntonioErdeljac/next13-ai-saas.git
+git clone https://github.com/DmitriyAngve/sass-ai
 ```
 
 ### Install packages
@@ -40,7 +51,6 @@ npm i
 ```
 
 ### Setup .env file
-
 
 ```js
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
@@ -68,7 +78,6 @@ Add MySQL Database (I used PlanetScale)
 
 ```shell
 npx prisma db push
-
 ```
 
 ### Start the app
