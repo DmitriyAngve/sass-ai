@@ -15,8 +15,8 @@ This repository is for a SaaS AI Platform built with the following technologies:
 - **MySQL**: Storing and managing data in a relational database.
 - **zod**: TypeScript-oriented schema validation for data integrity.
 - **Zustand**: State management for React applications.
-- **React-Hook-Form**: Efficient form state and validation management in React.
-- **React-Toast**: Displaying notifications and alerts in React applications.
+- **React Hook Form**: Efficient form state and validation management in React.
+- **React Toast**: Displaying notifications and alerts in React applications.
 
 [Explore the Live Demo](https://sass-ai-xi.vercel.app/)
 
