@@ -1,6 +1,6 @@
 # SaaS-AI
 
-This repository is for a SaaS AI Platform built with the following technologies:
+This repository is a SaaS AI Platform built with the following technologies:
 
 ## Technologies Used
 
