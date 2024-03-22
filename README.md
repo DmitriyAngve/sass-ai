@@ -1,9 +1,28 @@
-This is a repository for Build a SaaS AI Platform with Next.js 13, React, Tailwind, Prisma, Stripe.
-Features:
+# SaaS-AI
 
-- Tailwind design
-- Tailwind animations and effects
-- Full responsiveness
+This repository is a SaaS AI Platform built with the following technologies:
+
+## Technologies Used
+
+- **Next.js 13**: The foundation of the project, providing server-side rendering and routing.
+- **React**: Used for building the user interface and managing the state of the application.
+- **TypeScript**: Improving code quality and productivity with static typing.
+- **Tailwind CSS**: A utility-first CSS framework for simplified and consistent styling.
+- **ShadcnUI**: Reusable UI component library for visual consistency.
+- **Prisma**: Secure and efficient database operations with a type-safe query language.
+- **Stripe**: Handling secure online transactions and payments.
+- **Clerk**: Authentication and user management for enhanced security.
+- **MySQL**: Storing and managing data in a relational database.
+- **zod**: TypeScript-oriented schema validation for data integrity.
+- **Zustand**: State management for React applications.
+- **React Hook Form**: Efficient form state and validation management in React.
+- **React Toast**: Displaying notifications and alerts in React applications.
+
+[Explore the Live Demo](https://sass-ai-xi.vercel.app/)
+
+## Features:
+
+- Tailwind design, animations, effects and responsive
 - Clerk Authentication (Email, Google, 9+ Social Logins)
 - Client form validation and handling using react-hook-form
 - Server error handling using react-toast
@@ -14,33 +33,26 @@ Features:
 - Page loading state
 - Stripe monthly subscription
 - Free tier with API limiting
-- How to write POST, DELETE, and GET routes in route handlers (app/api)
-- How to fetch data in server react components by directly accessing database (WITHOUT API! like Magic!)
-- How to handle relations between Server and Child components!
-- How to reuse layouts
-- Folder structure in Next 13 App Router
-- 
-https://sass-ai-xi.vercel.app/
-
 
 ### Prerequisites
 
 **Node version 18.x.x**
 
-### Cloning the repository
+## Installation and Usage
+
+### 1. Cloning the repository
 
 ```shell
-git clone https://github.com/AntonioErdeljac/next13-ai-saas.git
+git clone https://github.com/DmitriyAngve/sass-ai
 ```
 
-### Install packages
+### 2. Install packages
 
 ```shell
 npm i
 ```
 
-### Setup .env file
-
+### 3. Setup .env file
 
 ```js
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
@@ -62,22 +74,21 @@ STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
-### Setup Prisma
+### 4. Setup Prisma
 
 Add MySQL Database (I used PlanetScale)
 
 ```shell
 npx prisma db push
-
 ```
 
-### Start the app
+### 5. Start the app
 
 ```shell
 npm run dev
 ```
 
-## Available commands
+## 6. Available commands
 
 Running commands with npm `npm run [command]`
 
