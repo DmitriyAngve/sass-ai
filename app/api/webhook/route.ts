@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   }
 
   // Завершение сеанса оформления заказа
-  const session = event.data.object as Stripe.Checkout.Session; // создаю переменную, которая извлекает объект сессии оформления заказа ("Stripe.Checkout.Session") из пол "event.data.object". Вебхук Stripe передает информацию о событии в виде объекта, и здесь я извлекаю объект сесси офомления заказа.
+  const session = event.data.object as Stripe.Checkout.Session; // создаю переменную, которая извлекает объект сессии оформления заказа ("Stripe.Checkout.Session") из "event.data.object". Вебхук Stripe передает информацию о событии в виде объекта, и здесь я извлекаю объект сесси офомления заказа.
 
   if (event.type === "checkout.session.completed") {
     const subscription = await stripe.subscriptions.retrieve(
